@@ -1,11 +1,6 @@
-import * as fs from "fs";
+import * as fs from 'node:fs';
 
-let list = [1,2,3];
-
-list = list.map(l=> l+1)
-console.log(list);
-
-const data = fs.readFileSync("../lines") ;
-
-console.log(data)
-
+const data = fs.readFileSync("lines").toString().split("\n");
+data.forEach((line) => {
+    console.log(line);
+});
