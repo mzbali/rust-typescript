@@ -1,4 +1,4 @@
-import fs from "fs";
+import * as fs from "fs";
 
 let list = [1,2,3];
 
@@ -8,3 +8,4 @@ console.log(list);
 const data = fs.readFileSync("../lines") ;
 
 console.log(data)
+
