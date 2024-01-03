@@ -1,10 +1,21 @@
-import * as fs from 'node:fs';
+enum Colour {
+    Red,
+    Green,
+    Blue,
+    Yellow
+}
 
-fs.readFileSync("lines").
-    toString().
-    split("\n").
-    filter((_, i) => i % 2 == 0).
-    filter((_,i) => i >= 2 && i < 4).
-    forEach((line) => {
-        console.log(line);
-    });
+function PrintColour(colour) {
+    switch (colour) {
+        case Colour.Red:
+            console.log("red");
+            break;
+        case Colour.Green:
+            console.log("green");
+            break;
+        case Colour.Blue:
+            console.log("blue");
+            break;
+    }
+}
+PrintColour(Colour.Yellow);
