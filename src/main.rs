@@ -1,27 +1,11 @@
-struct Custom {
-    age: usize,
-    name: String,
-}
-
-enum Item {
-    Number(usize),
-    String(String),
-    MyCustom(Custom),
-}
-fn append(items: &mut Vec<Item>) {
-    items.push(Item::String("Hello, fem!".to_string()));
+fn multiply(num: Option<usize>) -> Option<usize> {
+    return Some(num? * 5);
 }
 fn main() {
-    let mut items = vec![];
-    append(&mut items);
-    let foo = Item::Number(5);
-
-    match &foo {
-        Item::Number(number) => println!("number: {}", number),
-        Item::String(str) => println!("string: {}", str),
-        Item::MyCustom(custom) if custom.name == "Ricky" => {
-            println!("name:{}, age:{}", custom.name, custom.age)
-        }
-        _ => {}
+    let value = multiply(Some(5));
+    if let Some(result) = value {
+        println!("{}", result)
+    } else {
+        println!("Result is none")
     }
 }

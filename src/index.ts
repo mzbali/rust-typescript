@@ -1,21 +1,6 @@
-type Custom = {
-    age: number,
-    name: string
+function practice(num: number | undefined): number | undefined {
+    return num === undefined ? undefined: num * 5 ;
 }
-type item = number | string | Custom
+console.log(practice(5));
+console.log(practice(undefined));
 
-function append(item: Item[]) {
-    item.push("Hello, fem");
-}
-
-const items = [];
-
-console.log(items)
-append(items);
-console.log(items)
-
-const numbers: number[] = [];
-
-console.log(numbers);
-append(numbers);
-console.log(numbers);
