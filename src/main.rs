@@ -1,11 +1,8 @@
-fn multiply(num: Option<usize>) -> Option<usize> {
-    return Some(num? * 5);
+fn practice(nums: Vec<usize>, index: usize) -> usize {
+    return nums.get(index).unwrap_or(&index) * 5;
 }
 fn main() {
-    let value = multiply(Some(5));
-    if let Some(result) = value {
-        println!("{}", result)
-    } else {
-        println!("Result is none")
-    }
+    let value = practice(vec![1, 2, 3], 1);
+
+    println!("{}", value);
 }
