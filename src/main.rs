@@ -1,8 +1,8 @@
-fn practice(nums: Vec<usize>, index: usize) -> usize {
-    return nums.get(index).unwrap_or(&index) * 5;
-}
 fn main() {
-    let value = practice(vec![1, 2, 3], 1);
+    let filename = std::env::args()
+        .nth(1)
+        .expect("Need a filename as argument");
+    let numbers = std::fs::read_to_string(filename).expect("Failed to read the file to string");
 
-    println!("{}", value);
+    numbers.lines().for_each(|line| println!("{}", line))
 }

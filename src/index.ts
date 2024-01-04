@@ -1,6 +1,8 @@
-function practice(nums: number[], index: number): number | undefined {
-    return nums[index] ? nums[index] * 5 : index * 5;
-}
-console.log(practice([1, 2, 3], 0));
-console.log(practice([1, 2, 3], 4));
+import fs from "node:fs";
 
+const filename = process.argv[2]
+fs.
+    readFileSync(filename)
+    .toString()
+    .split("\n")
+    .forEach(line => console.log(line));
