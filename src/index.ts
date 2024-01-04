@@ -5,4 +5,11 @@ fs.
     readFileSync(filename)
     .toString()
     .split("\n")
-    .forEach(line => console.log(line));
+    .forEach((line) => {
+        const num = parseInt(line);
+        if (isNaN(num)) {
+            console.log("Not a number")
+        } else {
+            console.log(line)
+        }
+    });
