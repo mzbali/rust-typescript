@@ -1,22 +1,22 @@
-#[derive(Debug)]
-struct Item {
-    count: isize,
-}
+mod shapes;
+use shapes::{Circle, Rect, Area};
 
-fn add_one(item: &mut Item) {
-    item.count += 1;
-}
-
-fn print_all(items: &Vec<Item>) {
-    for item in items {
-        println!("{:?}", item);
-    }
-}
 
 fn main() {
-    let mut items = vec![{ Item { count: 1 } }];
-    let first = items.get_mut(0);
-    println!("{:?}", first);
-    let second = items.get_mut(1);
-    println!("{:?}", second);
+    let rect = Rect {
+        x: 0.0,
+        y: 0.0,
+        width: 10.0,
+        height: 10.0,
+    };
+
+    let circ = Circle {
+        x: 0.0,
+        y: 0.0,
+        radius: 10.0,
+    };
+
+    println!("{}", rect.area());
+    println!("{}", circ.area());
+    println!("{}", 6.0.area());
 }
