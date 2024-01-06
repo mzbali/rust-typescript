@@ -1,22 +1,12 @@
 mod shapes;
-use shapes::{Circle, Rect, Area};
-
+use crate::shapes::rect::Rect;
 
 fn main() {
-    let rect = Rect {
-        x: 0.0,
-        y: 0.0,
-        width: 10.0,
-        height: 10.0,
-    };
+    let rect = Rect::default();
 
-    let circ = Circle {
-        x: 0.0,
-        y: 0.0,
-        radius: 10.0,
-    };
+    for point in &rect {
+        println!("{:?}", point);
+    }
 
-    println!("{}", rect.area());
-    println!("{}", circ.area());
-    println!("{}", 6.0.area());
+    println!("{}", rect);
 }
