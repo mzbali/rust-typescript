@@ -1,12 +1,30 @@
 use std::fmt::Display;
 
-use super::area::Area;
+use super::{area::Area, circle::Circle, collisons::Collidable};
 
 pub struct Rect {
     pub x: f64,
     pub y: f64,
     pub width: f64,
     pub height: f64,
+}
+
+impl Rect {
+    pub fn contains_point(&self, (x, y): (f64, f64)) -> bool {
+        return x >= self.x && x <= self.x + self.width && y >= self.y && y <= self.y + self.height;
+    }
+}
+
+impl Collidable<Rect> for Rect {
+    fn collide(&self, other: &Rect) -> bool {
+        return self.contains_point((other.x, other.y));
+    }
+}
+
+impl Collidable<Circle> for Rect {
+    fn collide(&self, other: &Circle) -> bool {
+        return self.contains_point((other.x, other.y));
+    }
 }
 
 impl Area for Rect {
@@ -63,7 +81,6 @@ impl From<&Rect> for RectIter {
         };
     }
 }
-
 impl IntoIterator for Rect {
     type Item = (f64, f64);
     type IntoIter = RectIter;
