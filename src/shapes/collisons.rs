@@ -32,17 +32,19 @@ impl From<Vec<(f64, f64)>> for PointIter {
     }
 }
 
-trait Points {
+pub trait Points {
     fn points(&self) -> PointIter;
 }
 
-trait Contains {
+pub trait Contains {
     fn contains_points(&self, point: (f64, f64)) -> bool;
 }
 
-impl<T> Collidable<T> for T
+// Blanket implementation
+impl<T, V> Collidable<T> for V
 where
-    T: Points + Contains,
+    T: Points,
+    V: Contains,
 {
     fn collide(&self, other: &T) -> bool {
         for point in other.points() {

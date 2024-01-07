@@ -15,8 +15,8 @@ fn main() {
         radius: 4.0,
     };
 
-    rect.collide(&rect2);
-    circle.collide(&circle2);
+    println!("{}", rect.collide(&rect2));
+    println!("{}", circle.collide(&circle2));
     rect.collide(&circle);
 
     println!("{}", rect);
