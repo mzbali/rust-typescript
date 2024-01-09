@@ -1,4 +1,4 @@
-use std::fmt::Display;
+use std::{fmt::Display, str::FromStr};
 
 use super::{
     area::Area,
@@ -24,7 +24,7 @@ impl Contains for Rect {
     }
 }
 
-impl Points for Rect {
+impl Points for &Rect {
     fn points(&self) -> super::collisons::PointIter {
         return vec![
             (self.x, self.y),
@@ -33,6 +33,23 @@ impl Points for Rect {
             (self.x + self.width, self.y + self.height),
         ]
         .into();
+    }
+}
+
+impl FromStr for Rect {
+    type Err = anyhow::Error;
+
+    fn from_str(s: &str) -> Result<Self, Self::Err> {
+        let parts: Vec<&str> = s.split(" ").collect();
+        if parts.len() != 4 {
+            return Err(anyhow::anyhow!("Rectangle is invalid check the file."));
+        }
+        return Ok(Rect {
+            x: parts[0].parse()?,
+            y: parts[1].parse()?,
+            width: parts[2].parse()?,
+            height: parts[3].parse()?,
+        });
     }
 }
 
